@@ -49,7 +49,7 @@ public class Prestamo {
     @Override
     public String toString() {
         return "Prestamo #   : " + numPrestamo + '\n' +
-                "Cliente     : " + cuenta.getCliente().getNombre() + "\n" +
+                "Cliente     : " + cuenta.getPropietario().getNombre() + "\n" +
                 "Saldo cuenta: " + this.getCuenta().getSaldo() + "\n" +
                 "Deuda       : " + this.deuda;
     }

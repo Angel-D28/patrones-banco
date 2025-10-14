@@ -3,10 +3,10 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-//SINGLETON 
+//SINGLETON
 public class Banco {
     private static Banco instancia;
-    private final List<Cuenta> cuentas;
+    private final List<ICuenta> cuentas;
     private final List<Cliente> clientes;
 
 
@@ -24,10 +24,10 @@ public class Banco {
     }
 
 
-    public void registrarCliente(Cliente c) { clientes.add(c); }
-    public void agregarCuenta(Cuenta c) { cuentas.add(c); }
+    public void registrarCliente(Cliente cliente) { clientes.add(cliente); }
+    public void agregarCuenta(ICuenta cuenta) { cuentas.add(cuenta); }
 
 
-    public List<Cuenta> getCuentas() { return cuentas; }
+    public List<ICuenta> getCuentas() { return cuentas; }
     public List<Cliente> getClientes() { return clientes; }
 }

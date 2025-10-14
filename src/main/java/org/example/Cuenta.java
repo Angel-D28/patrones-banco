@@ -1,71 +1,62 @@
 package org.example;
 
-public class Cuenta {
-    private String numCuenta;
-    private Cliente cliente;
+public class Cuenta implements ICuenta{
+    private String numeroCuenta;
+    private final Cliente propietario;
     private double saldo;
 
-    public Cuenta(String numCuenta, Cliente cliente) {
-        this.numCuenta = numCuenta;
-        this.cliente = cliente;
+
+    public Cuenta(Cliente propietario, String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+        this.propietario = propietario;
         this.saldo = 0;
     }
 
-    public void  consignar(double saldo) {
-        this.saldo += saldo;
+
+
+    public String getNumeroCuenta() {
+        return numeroCuenta;
     }
-
-    public void retirar(double valor) {
-
-        if (saldo >= valor) {
-            this.saldo -= valor;
-        }
-        else{
-            System.out.println("Fondos insuficientes");
-        }
+    public Cliente getPropietario() {
+        return propietario;
     }
-
-    public void transferir(Cuenta destino, double valor) {
-
-        if(this.saldo >= valor) {
-            destino.consignar(valor);
-            this.retirar(valor);
-        }
-        else{
-            System.out.println("Fondos insuficientes para esta transferencia");
-        }
-    }
-
-    public double consultarSaldo() {
-        return this.saldo;
-    }
-
-    public String getNumCuenta() {
-        return numCuenta;
-    }
-
-    public void setNumCuenta(String numCuenta) {
-        this.numCuenta = numCuenta;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
     public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+
+    @Override
+    public void consignar(double monto) {
+        if (monto <= 0) return;
+        saldo += monto;
     }
+
+
+    @Override
+    public boolean retirar(double monto) {
+        if (monto <= 0) return false;
+        if (saldo >= monto) {
+            saldo -= monto;
+            return true;
+        }
+        return false;
+    }
+
+
+    @Override
+    public double obtenerSaldo() {
+        return saldo;
+    }
+
+
+    @Override
+    public String getDescripcion() {
+        return "Cuenta #" + numeroCuenta + " de " + propietario.getNombre();
+    }
+
 
     @Override
     public String toString() {
-        return numCuenta + "\t" + cliente.toString() +  "\t" + saldo;
+        return getDescripcion() + " - Saldo: " + saldo;
     }
 }

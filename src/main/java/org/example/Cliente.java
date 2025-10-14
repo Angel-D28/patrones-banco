@@ -22,17 +22,23 @@ public class Cliente {
         private String telefono ;
 
 
-        public Builder(String nombre, String identificacion, String direccion, String telefono) {
+        public Builder nombre(String nombre) {
             this.nombre = nombre;
-            this.identificacion = identificacion;
-            this.direccion = direccion;
-            this.telefono = telefono;
+            return this;
         }
-
-
-        public Builder direccion(String direccion) { this.direccion = direccion; return this; }
-        public Builder telefono(String telefono) { this.telefono = telefono; return this; }
-        public Cliente build() { return new Cliente(this); }
+        public Builder identificacion(String identificacion) {
+            this.identificacion = identificacion;
+            return this;
+        }
+        public Builder direccion(String direccion) {
+            this.direccion = direccion;
+            return this; }
+        public Builder telefono(String telefono) {
+            this.telefono = telefono;
+            return this; }
+        public Cliente build() {
+            return new Cliente(this);
+        }
     }
 
     public String getNombre() {
