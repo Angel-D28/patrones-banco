@@ -24,7 +24,7 @@ public class CuentaConLimite extends CuentaDecorator {
                 if (cuentaDecorada instanceof Cuenta) {
                     Cuenta cuenta = (Cuenta) cuentaDecorada;
                     // permitir sobregiro: restar incluso si va a saldo negativo hasta el limite
-                     saldoActual-= monto;
+                     cuenta.setSaldo(cuenta.getSaldo() - monto);
                     return true;
                 }
                 // Si no es instancia de Cuenta, fallback: intentar de todas formas

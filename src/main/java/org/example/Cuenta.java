@@ -24,6 +24,13 @@ public class Cuenta implements ICuenta{
         return saldo;
     }
 
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
 
     @Override
     public void consignar(double monto) {

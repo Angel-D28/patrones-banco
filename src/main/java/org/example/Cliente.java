@@ -2,10 +2,10 @@ package org.example;
 
 //Builder en cliente
 public class Cliente {
-    private  String nombre;
-    private  String identificacion;
-    private  String direccion;
-    private  String telefono;
+    private  final String nombre;
+    private  final String identificacion;
+    private  final String direccion;
+    private  final String telefono;
 
 
     private Cliente(Builder builder) {

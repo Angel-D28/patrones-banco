@@ -2,10 +2,10 @@ package org.example;
 
 public class Prestamo {
     private String numPrestamo;
-    private Cuenta cuenta;
+    private ICuenta cuenta;
     private double deuda;
 
-    public Prestamo(String numPrestamo, Cuenta cuenta, double deuda) {
+    public Prestamo(String numPrestamo, ICuenta cuenta, double deuda) {
         this.numPrestamo = numPrestamo;
         this.cuenta = cuenta;
         this.deuda = deuda;
@@ -30,11 +30,11 @@ public class Prestamo {
         this.numPrestamo = numPrestamo;
     }
 
-    public Cuenta getCuenta() {
+    public ICuenta getCuenta() {
         return cuenta;
     }
 
-    public void setCuenta(Cuenta cuenta) {
+    public void setCuenta(ICuenta cuenta) {
         this.cuenta = cuenta;
     }
 
@@ -49,8 +49,9 @@ public class Prestamo {
     @Override
     public String toString() {
         return "Prestamo #   : " + numPrestamo + '\n' +
-                "Cliente     : " + cuenta.getPropietario().getNombre() + "\n" +
-                "Saldo cuenta: " + this.getCuenta().getSaldo() + "\n" +
+                "Cliente     : " + //
+                "\n" +
+                "Saldo cuenta: " + this.getCuenta().obtenerSaldo() + "\n" +
                 "Deuda       : " + this.deuda;
     }
 }
