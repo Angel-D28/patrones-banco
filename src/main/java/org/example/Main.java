@@ -14,7 +14,7 @@ public class Main {
                 .build();
 
         // Crear una cuenta y asociar al cliente
-        ICuenta cuenta1 = new Cuenta(cliente1, "ABC123");
+        ICuenta cuenta1 = new Cuenta(cliente1);
 
         // Mostrar saldo inicial
         System.out.println("Saldo inicial cuenta: " + cuenta1.obtenerSaldo() +"\t"+ cuenta1.getDescripcion());

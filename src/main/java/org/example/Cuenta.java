@@ -1,15 +1,29 @@
 package org.example;
 
+import java.security.SecureRandom;
+import java.util.UUID;
+
 public class Cuenta implements ICuenta{
     private String numeroCuenta;
     private final Cliente propietario;
     private double saldo;
 
 
-    public Cuenta(Cliente propietario, String numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
+    public Cuenta(Cliente propietario) {
+        this.numeroCuenta = generarNumeroCuenta(7);
         this.propietario = propietario;
         this.saldo = 0;
+    }
+
+    private static final SecureRandom rnd = new SecureRandom();
+
+    public static String generarNumeroCuenta(int digits) {
+        if (digits <= 0) throw new IllegalArgumentException("digits inválido");
+        StringBuilder sb = new StringBuilder(digits);
+        for (int i = 0; i < digits; i++) {
+            sb.append(rnd.nextInt(10));
+        }
+        return sb.toString();
     }
 
 

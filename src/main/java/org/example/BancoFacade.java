@@ -22,15 +22,15 @@ public class BancoFacade {
     }
 
     // Abrir cuenta simple (devuelve ICuenta para permitir decoradores)
-    public ICuenta abrirCuenta(Cliente propietario,String numeroCuenta) {
-        Cuenta cuentaNueva = new Cuenta(propietario, numeroCuenta);
+    public ICuenta abrirCuenta(Cliente propietario) {
+        Cuenta cuentaNueva = new Cuenta(propietario);
         banco.agregarCuenta(cuentaNueva);
         return cuentaNueva;
     }
 
     // Abrir cuenta con límite (Decorator)
-    public ICuenta abrirCuentaConLimite(Cliente propietario, String numeroCuenta,double limiteSobregiro) {
-        ICuenta cuenta = abrirCuenta(propietario, numeroCuenta);
+    public ICuenta abrirCuentaConLimite(Cliente propietario,double limiteSobregiro) {
+        ICuenta cuenta = abrirCuenta(propietario);
         ICuenta conLimite = new CuentaConLimite(cuenta, limiteSobregiro);
         banco.getCuentas().remove(cuenta);
         banco.getCuentas().add(conLimite);
